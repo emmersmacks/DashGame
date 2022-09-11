@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: StaticData
   m_EditorClassIdentifier: 
   WinPointsNumber: 3
-  EndScreenTime: 5
-  AnimationData: {fileID: 11400000, guid: 538a86d22b4bb6a46823bd18845bd6c0, type: 2}
+  EndScreenDelayTime: 5
   DashData: {fileID: 11400000, guid: 8b08fbc713942c64ca4a5d557be25339, type: 2}
-  InvulnerabilityData: {fileID: 11400000, guid: ef2424bb0237c314da7fa1f97fc77551, type: 2}
   MovementData: {fileID: 11400000, guid: 7b3ff240a58afc44797991777a932609, type: 2}
   ThirdPersonCameraData: {fileID: 11400000, guid: 7a1738431c5cb484bafacf5bfab8c48b, type: 2}

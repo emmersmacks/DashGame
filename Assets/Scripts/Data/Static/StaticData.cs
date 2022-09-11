@@ -6,10 +6,9 @@ namespace Data.Static
     public class StaticData : ScriptableObject
     {
         public int WinPointsNumber;
-        public float EndScreenTime;
+        public float EndScreenDelayTime;
         
         public DashData DashData;
-        public InvulnerabilityData InvulnerabilityData;
         public MovementData MovementData;
         public ThirdPersonCameraData ThirdPersonCameraData;
     }

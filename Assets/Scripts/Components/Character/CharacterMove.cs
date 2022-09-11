@@ -30,7 +30,6 @@ namespace Components.Character
         [Client]
         private void Update()
         {
-            transform.localRotation = Quaternion.Euler(0, ThirdPersonCamera.Horizontal, 0);
             if (isLocalPlayer)
             {
                 if (_inputService != null)
@@ -41,6 +40,7 @@ namespace Components.Character
                     }
                     else
                     {
+                        transform.localRotation = Quaternion.Euler(0, ThirdPersonCamera.Horizontal, 0);
                         Move(_inputService.MoveDirection);
                     }
                 }
@@ -54,7 +54,6 @@ namespace Components.Character
             var newDirection = CameraTarget.TransformDirection(direction);
             CharacterController.Move(newDirection * Time.deltaTime * _data.Speed);
             transform.LookAt( newDirection + transform.position);
-            
         }
     }
 }

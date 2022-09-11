@@ -41,10 +41,8 @@ namespace Components.Character
                 {
                     return dashComponent.PassedDashTime < DashComponent.PassedDashTime;
                 }
-
                 return true;
             }
-
             return false;
         }
 

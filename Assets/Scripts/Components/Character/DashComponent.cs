@@ -30,24 +30,32 @@ namespace Components.Character
         {
             if (isLocalPlayer)
             {
-                if (DashIsStart)
-                {
-                    PassedDashTime += Time.deltaTime;
-                }
-                else
-                {
-                    PassedDashTime = 0f;
-                }
-
+                CheckDashTimer();
                 if (_inputService != null)
                 {
-                    if (_inputService.IsDash() && !DashIsStart)
+                    if (CanDash())
                         StartDash();
                 }
-                    
             }
         }
-        
+
+        private bool CanDash()
+        {
+            return _inputService.IsDash() && !DashIsStart;
+        }
+
+        private void CheckDashTimer()
+        {
+            if (DashIsStart)
+            {
+                PassedDashTime += Time.deltaTime;
+            }
+            else
+            {
+                PassedDashTime = 0f;
+            }
+        }
+
         private void StartDash()
         {
             StartCoroutine(DashCoroutine());
@@ -71,6 +79,12 @@ namespace Components.Character
             DashActionSwich(false);
         }
 
+        private void Dash()
+        {
+            var dashDirection = transform.TransformDirection(Vector3.forward);
+            CharacterController.Move(dashDirection * Time.deltaTime * _data.DashSpeed);
+        }
+
         private void StartDashEffect()
         {
             AnimationController.PlayDashAnimation();
@@ -85,7 +99,7 @@ namespace Components.Character
             DashEffect.Clear();
             CmdStopDashEffect();
         }
-        
+
         [Command]
         private void CmdStartDashEffect()
         {
@@ -97,7 +111,7 @@ namespace Components.Character
         {
             RpcStopDashEffect();
         }
-        
+
         [ClientRpc]
         private void RpcStartDashEffect()
         {
@@ -122,12 +136,6 @@ namespace Components.Character
         private bool DistanceNotAchieved(Vector3 oldPosition)
         {
             return Vector3.Distance(transform.position, oldPosition) < _data.DashDistance;
-        }
-
-        private void Dash()
-        {
-            var dashDirection = transform.TransformDirection(Vector3.forward);
-            CharacterController.Move(dashDirection * Time.deltaTime * _data.DashSpeed);
         }
     }
 }

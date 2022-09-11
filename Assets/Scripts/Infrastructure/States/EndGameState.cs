@@ -70,7 +70,7 @@ namespace Infrastructure.States
             ReloadLevel();
             
             var _timePassed = 0f;
-            while (_timePassed < _dataService.StaticData.EndScreenTime)
+            while (_timePassed < _dataService.StaticData.EndScreenDelayTime)
             {
                 _timePassed += Time.deltaTime;
                 yield return null;
